@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Surgery Management System",
   "scripts": {
+    "install": "npm run install-frontend && npm run install-backend",
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "cd backend && npm install",
     "start": "npm run backend && npm run frontend",
     "backend": "cd backend && npm start -- --port 3000",
     "frontend": "cd frontend && npm start -- --port 3001"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.0"
   }
 }
