@@ -1,0 +1,13 @@
+{
+  "name": "surgery-management-system",
+  "version": "1.0.0",
+  "description": "Surgery Management System",
+  "scripts": {
+    "start": "npm run backend && npm run frontend",
+    "backend": "cd backend && npm start -- --port 3000",
+    "frontend": "cd frontend && npm start -- --port 3001"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
