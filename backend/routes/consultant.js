@@ -4,11 +4,12 @@ const router = express.Router();
 
 // Select consultant
 router.post('/', (req, res) => {
-  const { patientId, consultantName } = req.body;
-  if (!patientId || !consultantName) return res.status(400).json({ error: 'Missing fields' });
-  db.query('INSERT INTO consultants (patient_id, name) VALUES (?, ?)', [patientId, consultantName], (err, result) => {
+  const { consultantName, arrivingTime, leavingTime, availableDays } = req.body;
+  if (!consultantName || !arrivingTime || !leavingTime) return res.status(400).json({ error: 'Missing fields' });
+  const availableDaysJson = JSON.stringify(availableDays || []);
+  db.query('INSERT INTO consultants (name, arriving_time, leaving_time, available_days) VALUES (?, ?, ?, ?)', [consultantName, arrivingTime, leavingTime, availableDaysJson], (err, result) => {
     if (err) return res.status(500).json({ error: 'DB error' });
-    res.json({ message: 'Consultant selected', consultantId: result.insertId });
+    res.json({ message: 'Consultant added', consultantId: result.insertId });
   });
 });
 
@@ -19,4 +20,4 @@ router.get('/all', (req, res) => {
   });
 });
 
-module.exports = router; 
+module.exports = router;

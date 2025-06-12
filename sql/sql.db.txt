@@ -13,9 +13,10 @@ CREATE TABLE IF NOT EXISTS patients (
 
 CREATE TABLE IF NOT EXISTS consultants (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    patient_id INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+    arriving_time TIME NOT NULL,
+    leaving_time TIME NOT NULL,
+    available_days JSON
 );
 
 CREATE TABLE IF NOT EXISTS surgeries (
@@ -46,5 +47,16 @@ CREATE TABLE IF NOT EXISTS feedback (
     id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT NOT NULL,
     feedback TEXT NOT NULL,
+    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    consultant_id INT NOT NULL,
+    patient_id INT NOT NULL,
+    appointment_day VARCHAR(20) NOT NULL,
+    appointment_time TIME NOT NULL,
+    reason TEXT NOT NULL,
+    FOREIGN KEY (consultant_id) REFERENCES consultants(id) ON DELETE CASCADE,
     FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
 );

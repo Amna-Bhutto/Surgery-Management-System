@@ -13,6 +13,7 @@ const surgeryRoutes = require('./routes/surgery');
 const labRoutes = require('./routes/lab');
 const pharmacyRoutes = require('./routes/pharmacy');
 const feedbackRoutes = require('./routes/feedback');
+const appointmentRoutes = require('./routes/appointment');
 
 const swaggerDocument = {
   openapi: '3.0.0',
@@ -227,6 +228,33 @@ const swaggerDocument = {
           500: { description: 'DB error' }
         }
       }
+    },
+    '/api/appointment': {
+      post: {
+        summary: 'Schedule an appointment',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  patientId: { type: 'integer' },
+                  doctor: { type: 'string' },
+                  date: { type: 'string' },
+                  consent: { type: 'string' }
+                },
+                required: ['patientId', 'doctor', 'date', 'consent']
+              }
+            }
+          }
+        },
+        responses: {
+          200: { description: 'Appointment scheduled' },
+          400: { description: 'Missing fields' },
+          500: { description: 'DB error' }
+        }
+      }
     }
   }
 };
@@ -240,6 +268,7 @@ app.use('/api/surgery', surgeryRoutes);
 app.use('/api/lab', labRoutes);
 app.use('/api/pharmacy', pharmacyRoutes);
 app.use('/api/feedback', feedbackRoutes);
+app.use('/api/appointment', appointmentRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hospital Management System API');

@@ -25,6 +25,9 @@ function Dashboard() {
           <Link to="/feedback" className="btn btn-success w-100">Feedback</Link>
         </div>
         <div className="col-md-4">
+          <Link to="/appointment" className="btn btn-success w-100">Appointment Form</Link>
+        </div>
+        <div className="col-md-4">
           <Link to="/table/patients" className="btn btn-outline-secondary w-100">View Patients</Link>
         </div>
         <div className="col-md-4">
@@ -41,6 +44,9 @@ function Dashboard() {
         </div>
         <div className="col-md-4">
           <Link to="/table/feedback" className="btn btn-outline-secondary w-100">View Feedback</Link>
+        </div>
+        <div className="col-md-4">
+          <Link to="/table/appointments" className="btn btn-outline-secondary w-100">View Appointments</Link>
         </div>
       </div>
     </div>

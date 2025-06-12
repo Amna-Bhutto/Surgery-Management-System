@@ -11,6 +11,7 @@ import PharmacyPortal from './components/PharmacyPortal';
 import Feedback from './components/Feedback';
 import TableView from './components/TableView';
 import Navbar from './components/Navbar';
+import AppointmentForm from './components/AppointmentForm';
 
 function PrivateRoute({ children }) {
   const isAuth = !!localStorage.getItem('user');
@@ -31,6 +32,7 @@ function App() {
           <Route path="/consultant" element={<PrivateRoute><ConsultantPortal /></PrivateRoute>} />
           <Route path="/surgery" element={<PrivateRoute><SurgeryScheduling /></PrivateRoute>} />
           <Route path="/lab" element={<PrivateRoute><LabTechnicianPortal /></PrivateRoute>} />
+          <Route path="/appointment" element={<PrivateRoute><AppointmentForm /></PrivateRoute>} />
           <Route path="/pharmacy" element={<PrivateRoute><PharmacyPortal /></PrivateRoute>} />
           <Route path="/feedback" element={<PrivateRoute><Feedback /></PrivateRoute>} />
           <Route path="/table/:entity" element={<PrivateRoute><TableView /></PrivateRoute>} />

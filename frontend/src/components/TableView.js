@@ -4,11 +4,12 @@ import API from '../api';
 
 const entityMap = {
   patients: { endpoint: '/patient', columns: ['id', 'name', 'prescription', 'status'] },
-  consultants: { endpoint: '/consultant', columns: ['id', 'patient_id', 'name'] },
+  consultants: { endpoint: '/consultant', columns: ['id', 'name', 'arriving_time', 'leaving_time', 'available_days'] },
   surgeries: { endpoint: '/surgery', columns: ['id', 'patient_id', 'doctor', 'date', 'consent'] },
   lab_results: { endpoint: '/lab', columns: ['id', 'surgery_id', 'sample_name', 'result'] },
   pharmacy: { endpoint: '/pharmacy', columns: ['id', 'patient_id', 'medicine_name'] },
   feedback: { endpoint: '/feedback', columns: ['id', 'patient_id', 'feedback'] },
+  appointments: { endpoint: '/appointment', columns: ['id', 'consultant_id', 'patient_id', 'appointment_day', 'appointment_time', 'reason'] },
 };
 
 function TableView() {
