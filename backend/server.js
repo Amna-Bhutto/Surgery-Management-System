@@ -14,6 +14,9 @@ const labRoutes = require('./routes/lab');
 const pharmacyRoutes = require('./routes/pharmacy');
 const feedbackRoutes = require('./routes/feedback');
 const appointmentRoutes = require('./routes/appointment');
+const medicineRoutes = require('./routes/medicine');
+const billingRoutes = require('./routes/billing');
+const surgeryPackagesRoutes = require('./routes/surgeryPackages');
 
 const swaggerDocument = {
   openapi: '3.0.0',
@@ -86,10 +89,9 @@ const swaggerDocument = {
                 type: 'object',
                 properties: {
                   name: { type: 'string' },
-                  prescription: { type: 'string' },
-                  status: { type: 'string' }
+                  prescription: { type: 'string' }
                 },
-                required: ['name', 'status']
+                required: ['name']
               }
             }
           }
@@ -269,6 +271,9 @@ app.use('/api/lab', labRoutes);
 app.use('/api/pharmacy', pharmacyRoutes);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/appointment', appointmentRoutes);
+app.use('/api/medicine', medicineRoutes);
+app.use('/api/billing', billingRoutes);
+app.use('/api/surgeryPackages', surgeryPackagesRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hospital Management System API');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -12,6 +12,8 @@ import Feedback from './components/Feedback';
 import TableView from './components/TableView';
 import Navbar from './components/Navbar';
 import AppointmentForm from './components/AppointmentForm';
+import MedicineManagement from './components/MedicineManagement';
+import API from './api';
 
 function PrivateRoute({ children }) {
   const isAuth = !!localStorage.getItem('user');
@@ -34,6 +36,7 @@ function App() {
           <Route path="/lab" element={<PrivateRoute><LabTechnicianPortal /></PrivateRoute>} />
           <Route path="/appointment" element={<PrivateRoute><AppointmentForm /></PrivateRoute>} />
           <Route path="/pharmacy" element={<PrivateRoute><PharmacyPortal /></PrivateRoute>} />
+          <Route path="/medicine" element={<PrivateRoute><MedicineManagement /></PrivateRoute>} />
           <Route path="/feedback" element={<PrivateRoute><Feedback /></PrivateRoute>} />
           <Route path="/table/:entity" element={<PrivateRoute><TableView /></PrivateRoute>} />
         </Routes>

@@ -22,6 +22,9 @@ function Dashboard() {
           <Link to="/pharmacy" className="btn btn-success w-100">Pharmacy Portal</Link>
         </div>
         <div className="col-md-4">
+          <Link to="/medicine" className="btn btn-warning w-100">Medicine Management</Link>
+        </div>
+        <div className="col-md-4">
           <Link to="/feedback" className="btn btn-success w-100">Feedback</Link>
         </div>
         <div className="col-md-4">
@@ -47,6 +50,12 @@ function Dashboard() {
         </div>
         <div className="col-md-4">
           <Link to="/table/appointments" className="btn btn-outline-secondary w-100">View Appointments</Link>
+        </div>
+        <div className="col-md-4">
+          <Link to="/table/medicines" className="btn btn-outline-secondary w-100">View Medicines</Link>
+        </div>
+        <div className="col-md-4">
+          <Link to="/table/billing" className="btn btn-outline-secondary w-100">View Bills</Link>
         </div>
       </div>
     </div>
