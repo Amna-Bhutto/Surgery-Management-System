@@ -9,7 +9,8 @@ function MedicineManagement() {
     category: '',
     dosage: '',
     price: '',
-    stock_quantity: ''
+    stock_quantity: '',
+    image_url: ''
   });
   const [message, setMessage] = useState('');
   const [editingId, setEditingId] = useState(null);
@@ -45,7 +46,8 @@ function MedicineManagement() {
         category: '',
         dosage: '',
         price: '',
-        stock_quantity: ''
+        stock_quantity: '',
+        image_url: ''
       });
       fetchMedicines();
     } catch (err) {
@@ -60,7 +62,8 @@ function MedicineManagement() {
       category: medicine.category || '',
       dosage: medicine.dosage || '',
       price: medicine.price || '',
-      stock_quantity: medicine.stock_quantity || ''
+      stock_quantity: medicine.stock_quantity || '',
+      image_url: medicine.image_url || ''
     });
     setEditingId(medicine.id);
   };
@@ -147,7 +150,36 @@ function MedicineManagement() {
                   onChange={handleInputChange}
                 />
               </div>
+              <div className="col-md-6">
+                <input
+                  className="form-control mb-2"
+                  placeholder="Image URL (optional)"
+                  name="image_url"
+                  type="url"
+                  value={formData.image_url}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
+            
+            {/* Image Preview */}
+            {formData.image_url && (
+              <div className="mb-3">
+                <label className="form-label">Image Preview:</label>
+                <div className="d-flex align-items-center">
+                  <img 
+                    src={formData.image_url} 
+                    alt="Medicine preview" 
+                    style={{width: '100px', height: '100px', objectFit: 'cover', borderRadius: '8px'}}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                  <small className="text-muted ms-3">Preview of medicine image</small>
+                </div>
+              </div>
+            )}
+            
             <textarea
               className="form-control mb-2"
               placeholder="Description"
@@ -172,7 +204,8 @@ function MedicineManagement() {
                       category: '',
                       dosage: '',
                       price: '',
-                      stock_quantity: ''
+                      stock_quantity: '',
+                      image_url: ''
                     });
                   }}
                 >
@@ -193,6 +226,7 @@ function MedicineManagement() {
             <table className="table table-striped">
               <thead>
                 <tr>
+                  <th>Image</th>
                   <th>Name</th>
                   <th>Category</th>
                   <th>Dosage</th>
@@ -204,6 +238,16 @@ function MedicineManagement() {
               <tbody>
                 {medicines.map((medicine) => (
                   <tr key={medicine.id}>
+                    <td>
+                      <img 
+                        src={medicine.image_url || 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg'} 
+                        alt={medicine.name} 
+                        style={{width: '50px', height: '50px', objectFit: 'cover', borderRadius: '8px'}}
+                        onError={(e) => {
+                          e.target.src = 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg';
+                        }}
+                      />
+                    </td>
                     <td>{medicine.name}</td>
                     <td>{medicine.category || '-'}</td>
                     <td>{medicine.dosage || '-'}</td>

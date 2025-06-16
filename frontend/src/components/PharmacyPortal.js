@@ -294,11 +294,23 @@ function PharmacyPortal() {
                           onMouseEnter={e => e.target.style.backgroundColor = '#f8f9fa'}
                           onMouseLeave={e => e.target.style.backgroundColor = 'white'}
                         >
-                          <strong>{medicine.name}</strong> - {medicine.dosage}<br/>
-                          <small className="text-muted">
-                            {medicine.category} | Stock: {medicine.stock_quantity}
-                          </small><br/>
-                          <strong className="text-success">PKR {medicine.price || '0.00'}</strong>
+                          <div className="d-flex align-items-center">
+                            <img 
+                              src={medicine.image_url || 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg'} 
+                              alt={medicine.name} 
+                              style={{width: '40px', height: '40px', objectFit: 'cover', borderRadius: '6px', marginRight: '10px'}}
+                              onError={(e) => {
+                                e.target.src = 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg';
+                              }}
+                            />
+                            <div>
+                              <strong>{medicine.name}</strong> - {medicine.dosage}<br/>
+                              <small className="text-muted">
+                                {medicine.category} | Stock: {medicine.stock_quantity}
+                              </small><br/>
+                              <strong className="text-success">PKR {medicine.price || '0.00'}</strong>
+                            </div>
+                          </div>
                         </div>
                       ))}
                     </div>

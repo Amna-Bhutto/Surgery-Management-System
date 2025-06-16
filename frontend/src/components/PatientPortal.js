@@ -237,10 +237,20 @@ function PatientPortal() {
                     onMouseEnter={e => e.target.style.backgroundColor = '#f8f9fa'}
                     onMouseLeave={e => e.target.style.backgroundColor = 'white'}
                   >
-                    <div onClick={() => selectPrescription(medicine)}>
-                      <strong>{medicine.name}</strong> - {medicine.dosage}<br/>
-                      <small className="text-muted">{medicine.category}</small><br/>
-                      <strong className="text-success">PKR {medicine.price || '0.00'}</strong> per unit
+                    <div onClick={() => selectPrescription(medicine)} className="d-flex align-items-center">
+                      <img 
+                        src={medicine.image_url || 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg'} 
+                        alt={medicine.name} 
+                        style={{width: '40px', height: '40px', objectFit: 'cover', borderRadius: '6px', marginRight: '10px'}}
+                        onError={(e) => {
+                          e.target.src = 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg';
+                        }}
+                      />
+                      <div>
+                        <strong>{medicine.name}</strong> - {medicine.dosage}<br/>
+                        <small className="text-muted">{medicine.category}</small><br/>
+                        <strong className="text-success">PKR {medicine.price || '0.00'}</strong> per unit
+                      </div>
                     </div>
                     <button
                       className="btn btn-sm btn-outline-primary"

@@ -10,7 +10,7 @@ const entityMap = {
   pharmacy: { endpoint: '/pharmacy', columns: ['id', 'patient_id', 'medicine_name'] },
   feedback: { endpoint: '/feedback', columns: ['id', 'patient_id', 'feedback'] },
   appointments: { endpoint: '/appointment', columns: ['id', 'consultant_id', 'patient_id', 'appointment_day', 'appointment_time', 'reason'] },
-  medicines: { endpoint: '/medicine', columns: ['id', 'name', 'category', 'dosage', 'price', 'stock_quantity', 'description'] },
+  medicines: { endpoint: '/medicine', columns: ['id', 'image', 'name', 'category', 'dosage', 'price', 'stock_quantity', 'description'] },
   billing: { endpoint: '/billing', columns: ['id', 'patient_name', 'bill_number', 'total_amount', 'item_count', 'bill_date'] },
 };
 
@@ -118,6 +118,15 @@ function TableView() {
                        `PKR ${parseFloat(row[col] || 0).toFixed(2)}` : 
                        col === 'description' && row[col] && row[col].length > 50 ? 
                        `${row[col].substring(0, 50)}...` : 
+                       col === 'image' ? 
+                       <img 
+                         src={row.image_url || 'https://via.placeholder.com/60x60/cccccc/666666?text=No+Image'} 
+                         alt={row.name} 
+                         style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px'}}
+                         onError={(e) => {
+                           e.target.src = 'https://via.placeholder.com/60x60/cccccc/666666?text=No+Image';
+                         }}
+                       /> :
                        col === 'bill_date' && row[col] ? 
                        new Date(row[col]).toLocaleString() :
                        col === 'date' && row[col] ? 
