@@ -22,7 +22,7 @@ function Dashboard() {
           <Link to="/pharmacy" className="btn btn-success w-100">Pharmacy Portal</Link>
         </div>
         <div className="col-md-4">
-          <Link to="/medicine" className="btn btn-warning w-100">Medicine Management</Link>
+          <Link to="/medicine" className="btn btn-success w-100">Medicine Management</Link>
         </div>
         <div className="col-md-4">
           <Link to="/feedback" className="btn btn-success w-100">Feedback</Link>
@@ -30,6 +30,10 @@ function Dashboard() {
         <div className="col-md-4">
           <Link to="/appointment" className="btn btn-success w-100">Appointment Form</Link>
         </div>
+        </div>
+
+        <div className="mt-4 row g-3">
+
         <div className="col-md-4">
           <Link to="/table/patients" className="btn btn-outline-secondary w-100">View Patients</Link>
         </div>
