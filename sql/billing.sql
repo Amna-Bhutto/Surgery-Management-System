@@ -4,7 +4,6 @@ CREATE TABLE IF NOT EXISTS bills (
     bill_number VARCHAR(50) UNIQUE NOT NULL,
     total_amount DECIMAL(10,2) NOT NULL,
     bill_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    payment_status VARCHAR(50) DEFAULT 'Pending',
     notes TEXT,
     FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
 );

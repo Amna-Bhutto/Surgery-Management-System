@@ -2,7 +2,7 @@
 -- This script will add image_url column to medicines table
 
 -- Add image_url column to medicines table with default value
-ALTER TABLE medicines ADD COLUMN image_url VARCHAR(500) DEFAULT 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg' AFTER stock_quantity;
+-- ALTER TABLE medicines ADD COLUMN image_url VARCHAR(500) DEFAULT 'https://www.shutterstock.com/shutterstock/photos/1682021551/display_1500/stock-vector-medicine-icon-trendy-and-modern-placeholder-symbol-for-logo-web-app-ui-1682021551.jpg' AFTER stock_quantity;
 
 -- Insert some sample medicine data with images (using placeholder image URLs)
 -- You can replace these URLs with actual medicine images later
