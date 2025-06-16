@@ -58,12 +58,35 @@ function AppointmentForm() {
       <div className="card-body">
         <h3 className="card-title mb-4">Create Appointment</h3>
         <form onSubmit={handleSubmit}>
-          <select className="form-control mb-2" value={selectedConsultant} onChange={e => setSelectedConsultant(e.target.value)}>
-            <option value="">Select Consultant</option>
-            {consultants.map(consultant => (
-              <option key={consultant.id} value={consultant.id}>{consultant.name}</option>
-            ))}
-          </select>
+          <div className="mb-3">
+            <label className="form-label">Select Consultant</label>
+            <div className="row">
+              {consultants.map(consultant => (
+                <div key={consultant.id} className="col-md-6 mb-2">
+                  <div 
+                    className={`card cursor-pointer ${selectedConsultant === consultant.id.toString() ? 'border-primary bg-light' : ''}`}
+                    style={{cursor: 'pointer'}}
+                    onClick={() => setSelectedConsultant(consultant.id.toString())}
+                  >
+                    <div className="card-body p-2 d-flex align-items-center">
+                      <img 
+                        src={consultant.image_url || 'https://media.healthecareers.com/wp-content/uploads/2022/02/11204020/placeholderdoctor.jpg'} 
+                        alt={consultant.name} 
+                        style={{width: '40px', height: '40px', objectFit: 'cover', borderRadius: '6px', marginRight: '10px'}}
+                        onError={(e) => {
+                          e.target.src = 'https://media.healthecareers.com/wp-content/uploads/2022/02/11204020/placeholderdoctor.jpg';
+                        }}
+                      />
+                      <div>
+                        <small><strong>Dr. {consultant.name}</strong></small><br/>
+                        <small className="text-muted">{consultant.arriving_time} - {consultant.leaving_time}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           <select className="form-control mb-2" value={selectedDay} onChange={e => setSelectedDay(e.target.value)}>
             <option value="">Select Day</option>
             {availableDays.map(day => (

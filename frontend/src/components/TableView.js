@@ -4,7 +4,7 @@ import API from '../api';
 
 const entityMap = {
   patients: { endpoint: '/patient', columns: ['id', 'name', 'prescription'] },
-  consultants: { endpoint: '/consultant', columns: ['id', 'name', 'arriving_time', 'leaving_time', 'available_days'] },
+  consultants: { endpoint: '/consultant', columns: ['id', 'image', 'name', 'arriving_time', 'leaving_time', 'available_days'] },
   surgeries: { endpoint: '/surgery', columns: ['id', 'patient_name', 'doctor', 'surgery_package_name', 'package_price', 'date', 'consent'] },
   lab_results: { endpoint: '/lab', columns: ['id', 'patient_name', 'surgery_package_name', 'sample_type', 'result_type', 'result_value', 'test_date'] },
   pharmacy: { endpoint: '/pharmacy', columns: ['id', 'patient_id', 'medicine_name'] },
@@ -120,11 +120,11 @@ function TableView() {
                        `${row[col].substring(0, 50)}...` : 
                        col === 'image' ? 
                        <img 
-                         src={row.image_url || 'https://via.placeholder.com/60x60/cccccc/666666?text=No+Image'} 
+                         src={row.image_url || 'https://media.healthecareers.com/wp-content/uploads/2022/02/11204020/placeholderdoctor.jpg'} 
                          alt={row.name} 
                          style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px'}}
                          onError={(e) => {
-                           e.target.src = 'https://via.placeholder.com/60x60/cccccc/666666?text=No+Image';
+                           e.target.src = 'https://media.healthecareers.com/wp-content/uploads/2022/02/11204020/placeholderdoctor.jpg';
                          }}
                        /> :
                        col === 'bill_date' && row[col] ? 

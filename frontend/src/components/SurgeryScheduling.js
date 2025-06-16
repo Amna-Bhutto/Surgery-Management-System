@@ -264,17 +264,27 @@ function SurgeryScheduling() {
                 {filteredConsultants.map(consultant => (
                   <div
                     key={consultant.id}
-                    className="p-2 border-bottom hover-bg-light cursor-pointer"
+                    className="p-2 border-bottom hover-bg-light cursor-pointer d-flex align-items-center"
                     style={{cursor: 'pointer'}}
                     onMouseDown={() => selectConsultant(consultant)}
                     onMouseEnter={e => e.target.style.backgroundColor = '#f8f9fa'}
                     onMouseLeave={e => e.target.style.backgroundColor = 'white'}
                   >
-                    <strong>Dr. {consultant.name}</strong><br/>
-                    <small className="text-muted">
-                      Available: {consultant.arriving_time} - {consultant.leaving_time}
-                      {consultant.available_days && ` | Days: ${getAvailableDays(consultant.available_days)}`}
-                    </small>
+                    <img 
+                      src={consultant.image_url || 'https://media.healthecareers.com/wp-content/uploads/2022/02/11204020/placeholderdoctor.jpg'} 
+                      alt={consultant.name} 
+                      style={{width: '40px', height: '40px', objectFit: 'cover', borderRadius: '6px', marginRight: '10px'}}
+                      onError={(e) => {
+                        e.target.src = 'https://media.healthecareers.com/wp-content/uploads/2022/02/11204020/placeholderdoctor.jpg';
+                      }}
+                    />
+                    <div>
+                      <strong>Dr. {consultant.name}</strong><br/>
+                      <small className="text-muted">
+                        Available: {consultant.arriving_time} - {consultant.leaving_time}
+                        {consultant.available_days && ` | Days: ${getAvailableDays(consultant.available_days)}`}
+                      </small>
+                    </div>
                   </div>
                 ))}
               </div>

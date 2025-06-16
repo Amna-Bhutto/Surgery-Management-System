@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS consultants (
     name VARCHAR(255) NOT NULL,
     arriving_time TIME NOT NULL,
     leaving_time TIME NOT NULL,
-    available_days JSON
+    available_days JSON,
+    image_url VARCHAR(500) DEFAULT 'https://media.healthecareers.com/wp-content/uploads/2022/02/11204020/placeholderdoctor.jpg'
 );
 
 CREATE TABLE IF NOT EXISTS surgery_packages (
