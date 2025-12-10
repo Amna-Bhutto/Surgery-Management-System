@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import PatientPortal from './components/PatientPortal';
 import ConsultantPortal from './components/ConsultantPortal';
@@ -27,8 +28,8 @@ function App() {
       <div className="container mt-4">
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Auth defaultTab="login" />} />
+          <Route path="/signup" element={<Auth defaultTab="signup" />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           <Route path="/patient" element={<PrivateRoute><PatientPortal /></PrivateRoute>} />
           <Route path="/consultant" element={<PrivateRoute><ConsultantPortal /></PrivateRoute>} />

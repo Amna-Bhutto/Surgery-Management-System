@@ -3,6 +3,17 @@ const bcrypt = require('bcrypt');
 const db = require('../db');
 const router = express.Router();
 
+// Check username availability
+router.get('/username-available', (req, res) => {
+  const { username } = req.query;
+  if (!username) return res.status(400).json({ error: 'username is required' });
+  db.query('SELECT COUNT(1) AS cnt FROM users WHERE username = ?', [username], (err, results) => {
+    if (err) return res.status(500).json({ error: 'DB error' });
+    const exists = results[0]?.cnt > 0;
+    res.json({ available: !exists });
+  });
+});
+
 // Signup
 router.post('/signup', async (req, res) => {
   const { username, password } = req.body;
